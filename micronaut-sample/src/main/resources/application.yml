@@ -7,6 +7,7 @@ datasources:
     driverClassName: org.mariadb.jdbc.Driver
     username: cardoso
     password: 112358
+#    schema-generate: CREATE_DROP
     schema-generate: NONE
     dialect: MYSQL
 jpa:
