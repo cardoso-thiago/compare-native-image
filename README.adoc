@@ -13,6 +13,7 @@ image::img/system.png[]
 |Tamanho da Imagem|:3rd_place_medal:|:2nd_place_medal:|:1st_place_medal:
 |Tempo de Subida|:3rd_place_medal:|:2nd_place_medal:|:1st_place_medal:
 |Execuções Necessárias|:2nd_place_medal:|:3rd_place_medal:|:1st_place_medal:
+|Tempo de Subida Padrão|:3rd_place_medal:|:2nd_place_medal:|:1st_place_medal:
 |===
 
 == Benchmark
@@ -35,6 +36,7 @@ Em breve
 |Tamanho da Imagem|184,9 MB
 |Tempo de Subida|130ms
 |Quantidade de Execuções para Gerar a Imagem|4
+|Tempo de Subida Padrão|4.263s
 |===
 
 == Micronaut
@@ -53,6 +55,7 @@ Em breve
 |Tamanho da Imagem|103,9 MB
 |Tempo de Subida|62ms
 |Quantidade de Execuções para Gerar a Imagem|5
+|Tempo de Subida Padrão|1.516s
 |===
 
 == Quarkus
@@ -70,6 +73,7 @@ Em breve
 |Tamanho da Imagem|61,5 MB
 |Tempo de Subida|15ms
 |Quantidade de Execuções para Gerar a Imagem|1
+|Tempo de Subida Padrão|1.405s
 |===
 
 == Execução
