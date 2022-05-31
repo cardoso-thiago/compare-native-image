@@ -1,0 +1,20 @@
+scenario,default
+version,Gradle 7.4
+tasks,build
+value,total execution time
+warm-up build #1,37093
+warm-up build #2,799
+warm-up build #3,821
+warm-up build #4,505
+warm-up build #5,449
+warm-up build #6,294
+measured build #1,623
+measured build #2,342
+measured build #3,652
+measured build #4,313
+measured build #5,942
+measured build #6,948
+measured build #7,702
+measured build #8,353
+measured build #9,494
+measured build #10,487

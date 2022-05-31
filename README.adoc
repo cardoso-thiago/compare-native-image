@@ -76,6 +76,75 @@ Em breve
 |Tempo de Subida Padrão|1.405s
 |===
 
+== Resultado Final
+
+[cols="^,^,^,^", options="header"]
+|===
+||Spring|Micronaut|Quarkus
+|Tamanho da Imagem|184,9 MB|103,9 MB|61,5 MB
+|Tempo de Subida|130ms|62ms|15ms
+|Quantidade de Execuções para Gerar a Imagem|4|5|1
+|Tempo de Subida Padrão|4.263s|1.516s|1.405s
+|===
+
 == Execução
 
 image::img/execucao.png[]
+
+== Comparações da Execução Padrão
+
+=== Tempo de Build Padrão
+
+Utilizando o https://github.com/gradle/gradle-profiler[gradle-profiler]
+
+[cols="^,^,^", options="header"]
+|===
+|Spring|Micronaut|Quarkus
+|1.334,76 ms|586,10 ms|2.403,78 ms
+|===
+
+=== Testes de Carga
+
+==== Carga Baixa
+
+Utilização do Gatling com a seguinte configuração:
+[source,scala]
+----
+  setUp(
+    scn.inject(
+      nothingFor(1),
+      atOnceUsers(10),
+      rampUsers(10).during(1),
+      constantUsersPerSec(20).during(5),
+      constantUsersPerSec(20).during(5).randomized,
+      rampUsersPerSec(10).to(20).during(3.minutes),
+      rampUsersPerSec(10).to(20).during(3.minutes).randomized
+    ).protocols(httpProtocol)
+  )
+----
+
+[cols="^,^,^,^", options="header"]
+|===
+||Spring|Micronaut|Quarkus
+|Número de Requisições pelo Tempo do Teste|5648|5634|5616
+|Tempo Máximo de Resposta|524ms|2838ms|475ms
+|Tempo de Resposta Padrão|4ms|15ms|3ms
+|Porcentagem das Requisições no Tempo Padrão|81,58%|98,89%|71,61%
+
+|===
+
+===== Uso de Memória e CPU durante os testes de Carga Baixa
+
+Utilização do `psrecord` para coleta de uso de memória e CPU do processo.
+
+- Spring
+
+image::img/psrecord/spring.png[]
+
+- Micronaut
+
+image::img/psrecord/micronaut.png[]
+
+- Quarkus
+
+image::img/psrecord/quarkus.png[]

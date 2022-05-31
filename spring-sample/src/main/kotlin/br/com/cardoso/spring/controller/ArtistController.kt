@@ -11,5 +11,5 @@ class ArtistController(private val artistService: ArtistService) {
     fun addArtist(@RequestBody listArtists: List<Artist>) = artistService.addArtists(listArtists)
 
     @GetMapping("/search/{letter}")
-    fun searchArtist(@PathVariable("letter") letter:Char) = artistService.searchArtist(letter)
+    fun searchArtist(@PathVariable("letter") letter: Char) = artistService.searchArtist(letter)
 }
