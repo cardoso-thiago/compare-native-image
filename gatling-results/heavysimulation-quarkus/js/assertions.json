@@ -1,0 +1,10 @@
+{
+  "simulation": "test.scala.test.HeavySimulation",
+  "simulationId": "heavysimulation",
+  "start": 1654528002125,
+  "description": "",
+  "scenarios": ["SearchArtist"],
+  "assertions": [
+
+  ]
+}

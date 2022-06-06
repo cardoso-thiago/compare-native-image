@@ -6,8 +6,8 @@ pathFormatted: "group_missing-name-b06d1",
 stats: {
     "name": "Global Information",
     "numberOfRequests": {
-        "total": "5648",
-        "ok": "5648",
+        "total": "5625",
+        "ok": "5625",
         "ko": "0"
     },
     "minResponseTime": {
@@ -16,8 +16,8 @@ stats: {
         "ko": "-"
     },
     "maxResponseTime": {
-        "total": "524",
-        "ok": "524",
+        "total": "458",
+        "ok": "458",
         "ko": "-"
     },
     "meanResponseTime": {
@@ -26,13 +26,13 @@ stats: {
         "ko": "-"
     },
     "standardDeviation": {
-        "total": "25",
-        "ok": "25",
+        "total": "21",
+        "ok": "21",
         "ko": "-"
     },
     "percentiles1": {
-        "total": "5",
-        "ok": "5",
+        "total": "4",
+        "ok": "4",
         "ko": "-"
     },
     "percentiles2": {
@@ -52,7 +52,7 @@ stats: {
     },
     "group1": {
     "name": "t < 800 ms",
-    "count": 5648,
+    "count": 5625,
     "percentage": 100
 },
     "group2": {
@@ -71,8 +71,8 @@ stats: {
     "percentage": 0
 },
     "meanNumberOfRequestsPerSecond": {
-        "total": "14.942",
-        "ok": "14.942",
+        "total": "14.881",
+        "ok": "14.881",
         "ko": "-"
     }
 },
@@ -85,8 +85,8 @@ pathFormatted: "req_searchartist-3d446",
 stats: {
     "name": "searchArtist",
     "numberOfRequests": {
-        "total": "5648",
-        "ok": "5648",
+        "total": "5625",
+        "ok": "5625",
         "ko": "0"
     },
     "minResponseTime": {
@@ -95,8 +95,8 @@ stats: {
         "ko": "-"
     },
     "maxResponseTime": {
-        "total": "524",
-        "ok": "524",
+        "total": "458",
+        "ok": "458",
         "ko": "-"
     },
     "meanResponseTime": {
@@ -105,13 +105,13 @@ stats: {
         "ko": "-"
     },
     "standardDeviation": {
-        "total": "25",
-        "ok": "25",
+        "total": "21",
+        "ok": "21",
         "ko": "-"
     },
     "percentiles1": {
-        "total": "5",
-        "ok": "5",
+        "total": "4",
+        "ok": "4",
         "ko": "-"
     },
     "percentiles2": {
@@ -131,7 +131,7 @@ stats: {
     },
     "group1": {
     "name": "t < 800 ms",
-    "count": 5648,
+    "count": 5625,
     "percentage": 100
 },
     "group2": {
@@ -150,8 +150,8 @@ stats: {
     "percentage": 0
 },
     "meanNumberOfRequestsPerSecond": {
-        "total": "14.942",
-        "ok": "14.942",
+        "total": "14.881",
+        "ok": "14.881",
         "ko": "-"
     }
 }

@@ -85,6 +85,9 @@ Em breve
 |Tempo de Subida|130ms|62ms|15ms
 |Quantidade de Execuções para Gerar a Imagem|4|5|1
 |Tempo de Subida Padrão|4.263s|1.516s|1.405s
+|Tempo de Subida Padrão (OpenJ9)|3.595s|1.339s|1.143s
+|Tempo de Subida Padrão (OpenJ9 + Shared Classes)|1.699s|0.657s|1.004s
+|Tempo de Subida Padrão (OpenJ9 + Shared Classes + Spring Lazy Initialization)|1.561s|0.657s|1.004s
 |===
 
 == Execução
@@ -126,10 +129,10 @@ Utilização do Gatling com a seguinte configuração:
 [cols="^,^,^,^", options="header"]
 |===
 ||Spring|Micronaut|Quarkus
-|Número de Requisições pelo Tempo do Teste|5648|5634|5616
-|Tempo Máximo de Resposta|524ms|2838ms|475ms
-|Tempo de Resposta Padrão|4ms|15ms|3ms
-|Porcentagem das Requisições no Tempo Padrão|81,58%|98,89%|71,61%
+|Número de Requisições pelo Tempo do Teste|5625|5634|5616
+|Tempo Máximo de Resposta|458ms|2838ms|475ms
+|Tempo de Resposta Padrão|3ms|15ms|3ms
+|Porcentagem das Requisições no Tempo Padrão|74,88%|98,89%|71,61%
 
 |===
 
@@ -148,3 +151,48 @@ image::img/psrecord/micronaut.png[]
 - Quarkus
 
 image::img/psrecord/quarkus.png[]
+
+==== Carga Alta
+
+Utilização do Gatling com a seguinte configuração:
+[source,scala]
+----
+  setUp(
+    scn.inject(
+      atOnceUsers(100),
+      constantUsersPerSec(100).during(1.minutes),
+      rampUsersPerSec(100).to(200).during(1.minutes),
+      constantUsersPerSec(300).during(1.minutes),
+      rampUsersPerSec(300).to(500).during(1.minutes),
+      constantUsersPerSec(1000).during(1.minutes),
+      rampUsersPerSec(1000).to(2000).during(1.minutes),
+      heavisideUsers(2000).during(1.minutes)
+    ).protocols(httpProtocol)
+  )
+----
+
+[cols="^,^,^,^", options="header"]
+|===
+||Spring|Micronaut|Quarkus
+|Número de Requisições pelo Tempo do Teste|209100|209100|209100
+|Tempo Máximo de Resposta|782ms|3356ms|3206ms
+|Tempo de Resposta Padrão|4ms|17ms|16ms
+|Porcentagem das Requisições no Tempo Padrão|98,55%|99,31%|99,40%
+
+|===
+
+===== Uso de Memória e CPU durante os testes de Carga Alta
+
+Utilização do `psrecord` para coleta de uso de memória e CPU do processo.
+
+- Spring
+
+image::img/psrecord/spring_heavy.png[]
+
+- Micronaut
+
+image::img/psrecord/micronaut_heavy.png[]
+
+- Quarkus
+
+image::img/psrecord/quarkus_heavy.png[]
