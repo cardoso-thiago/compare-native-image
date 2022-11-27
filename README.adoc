@@ -6,19 +6,15 @@ image::img/system.png[]
 
 == Ranking
 
-[cols="^,^,^,^", options="header"]
+[cols="^,^,^,^,^", options="header"]
 |===
-||Spring Boot|Micronaut|Quarkus 
-|Facilidade de Geração|:3rd_place_medal:|:2nd_place_medal:|:1st_place_medal:
-|Tamanho da Imagem|:3rd_place_medal:|:2nd_place_medal:|:1st_place_medal:
-|Tempo de Subida|:3rd_place_medal:|:2nd_place_medal:|:1st_place_medal:
-|Execuções Necessárias|:2nd_place_medal:|:3rd_place_medal:|:1st_place_medal:
-|Tempo de Subida Padrão|:3rd_place_medal:|:2nd_place_medal:|:1st_place_medal:
+||Spring Boot|Micronaut|Quarkus|Spring Boot 3
+|Facilidade de Geração|:3rd_place_medal:|:2nd_place_medal:|:1st_place_medal:|:1st_place_medal:
+|Tamanho da Imagem|:small_red_triangle_down:|:2nd_place_medal:|:1st_place_medal:|:3rd_place_medal:
+|Tempo de Subida|:small_red_triangle_down:|:2nd_place_medal:|:1st_place_medal:|:3rd_place_medal:
+|Execuções Necessárias|:2nd_place_medal:|:3rd_place_medal:|:1st_place_medal:|:1st_place_medal:
+|Tempo de Subida Padrão|:small_red_triangle_down:|:2nd_place_medal:|:1st_place_medal:|:3rd_place_medal:
 |===
-
-== Benchmark
-
-Em breve
 
 == Spring Boot
 
@@ -76,18 +72,36 @@ Em breve
 |Tempo de Subida Padrão|1.405s
 |===
 
+== Spring Boot 3
+
+=== Processos
+
+- (:+1:) Gerou as configurações necessárias de maneira automática.
+- (:+1:) Consumo de memória ainda alto, mas não houve estouro de memória mesmo sem a finalização de processos abertos.
+- (:+1:) Maven e Gradle disponíveis.
+- (:+1:) Funcionou adequadamente com a última versão conforme processo da documentação oficial e sem configurações adicionais.
+
+[cols="^,^", options="header"]
+|===
+2+|Spring Boot 3
+|Tamanho da Imagem|137 MB
+|Tempo de Subida|122ms
+|Quantidade de Execuções para Gerar a Imagem|1
+|Tempo de Subida Padrão|4.202s
+|===
+
 == Resultado Final
 
-[cols="^,^,^,^", options="header"]
+[cols="^,^,^,^,^", options="header"]
 |===
-||Spring|Micronaut|Quarkus
-|Tamanho da Imagem|184,9 MB|103,9 MB|61,5 MB
-|Tempo de Subida|130ms|62ms|15ms
-|Quantidade de Execuções para Gerar a Imagem|4|5|1
-|Tempo de Subida Padrão|4.263s|1.516s|1.405s
-|Tempo de Subida Padrão (OpenJ9)|3.595s|1.339s|1.143s
-|Tempo de Subida Padrão (OpenJ9 + Shared Classes)|1.699s|0.657s|1.004s
-|Tempo de Subida Padrão (OpenJ9 + Shared Classes + Spring Lazy Initialization)|1.561s|0.657s|1.004s
+||Spring|Micronaut|Quarkus|Spring Boot 3
+|Tamanho da Imagem|184,9 MB|103,9 MB|61,5 MB|137 MB
+|Tempo de Subida|130ms|62ms|15ms|122ms
+|Quantidade de Execuções para Gerar a Imagem|4|5|1|1
+|Tempo de Subida Padrão|4.263s|1.516s|1.405s|4.202s
+|Tempo de Subida Padrão (OpenJ9)|3.595s|1.339s|1.143s|3.696s
+|Tempo de Subida Padrão (OpenJ9 + Shared Classes)|1.699s|0.657s|1.004s|2.119s
+|Tempo de Subida Padrão (OpenJ9 + Shared Classes + Spring Lazy Initialization)|1.561s|0.657s|1.004s|1.978s
 |===
 
 == Execução
@@ -100,10 +114,10 @@ image::img/execucao.png[]
 
 Utilizando o https://github.com/gradle/gradle-profiler[gradle-profiler]
 
-[cols="^,^,^", options="header"]
+[cols="^,^,^,^", options="header"]
 |===
-|Spring|Micronaut|Quarkus
-|1.334,76 ms|586,10 ms|2.403,78 ms
+|Spring|Micronaut|Quarkus|Spring Boot 3
+|1.334,76 ms|586,10 ms|2.403,78 ms|733,87 ms
 |===
 
 === Testes de Carga
@@ -126,13 +140,13 @@ Utilização do Gatling com a seguinte configuração:
   )
 ----
 
-[cols="^,^,^,^", options="header"]
+[cols="^,^,^,^,^", options="header"]
 |===
-||Spring|Micronaut|Quarkus
-|Número de Requisições pelo Tempo do Teste|5625|5634|5616
-|Tempo Máximo de Resposta|458ms|2838ms|475ms
-|Tempo de Resposta Padrão|3ms|15ms|3ms
-|Porcentagem das Requisições no Tempo Padrão|74,88%|98,89%|71,61%
+||Spring|Micronaut|Quarkus|Spring Boot 3
+|Número de Requisições pelo Tempo do Teste|5625|5634|5616|5717
+|Tempo Máximo de Resposta|458ms|2838ms|475ms|898ms
+|Tempo de Resposta Padrão|3ms|15ms|3ms|5ms
+|Porcentagem das Requisições no Tempo Padrão|74,88%|98,89%|71,61%|88,79%
 
 |===
 
@@ -151,6 +165,10 @@ image::img/psrecord/micronaut.png[]
 - Quarkus
 
 image::img/psrecord/quarkus.png[]
+
+- Spring Boot 3
+
+image::img/psrecord/spring3.png[]
 
 ==== Carga Alta
 
@@ -171,13 +189,13 @@ Utilização do Gatling com a seguinte configuração:
   )
 ----
 
-[cols="^,^,^,^", options="header"]
+[cols="^,^,^,^,^", options="header"]
 |===
-||Spring|Micronaut|Quarkus
-|Número de Requisições pelo Tempo do Teste|209100|209100|209100
-|Tempo Máximo de Resposta|782ms|3356ms|3206ms
-|Tempo de Resposta Padrão|4ms|17ms|16ms
-|Porcentagem das Requisições no Tempo Padrão|98,55%|99,31%|99,40%
+||Spring|Micronaut|Quarkus|Spring Boot 3
+|Número de Requisições pelo Tempo do Teste|209100|208707|208782|208956
+|Tempo Máximo de Resposta|782ms|3356ms|3203ms|1232ms
+|Tempo de Resposta Padrão|4ms|17ms|16ms|6ms
+|Porcentagem das Requisições no Tempo Padrão|98,55%|99,31%|99,40%|99%
 
 |===
 
@@ -196,3 +214,7 @@ image::img/psrecord/micronaut_heavy.png[]
 - Quarkus
 
 image::img/psrecord/quarkus_heavy.png[]
+
+- Spring Boot 3
+
+image::img/psrecord/spring3_heavy.png[]

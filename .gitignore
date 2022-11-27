@@ -1,5 +1,7 @@
 .idea
-
+profile-out
+/gradle-user-home
+gatling-test/target/
 
 ### Created by https://www.gitignore.io
 ### Java ###
